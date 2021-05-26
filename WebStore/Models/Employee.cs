@@ -1,4 +1,6 @@
-﻿namespace WebStore.Models
+﻿using System.Collections.Generic;
+
+namespace WebStore.Models
 {
     public class Employee
     {
@@ -11,6 +13,8 @@
         public string Patronymic { get; set; }
 
         public int Age { get; set; }
+
+        public List<Details> detailsData { get; set; }
     }
 
     //public record Employee2(int Id, string FirstName, string LastName, string Patronymic, int Age);
