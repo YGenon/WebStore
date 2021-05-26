@@ -72,5 +72,13 @@ namespace WebStore.Controllers
         {
             return View(__Employees);
         }
+
+        public IActionResult Details(int id)
+        {
+            ViewData["IdEmploees"] = id;
+            return View(__Employees);
+
+
+        }
     }
 }
