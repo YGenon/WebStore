@@ -80,5 +80,8 @@ namespace WebStore.Controllers
 
 
         }
+
+        public IActionResult Error_404() {return View(); }
+       
     }
 }
