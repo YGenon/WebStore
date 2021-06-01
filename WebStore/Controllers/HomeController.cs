@@ -81,7 +81,8 @@ namespace WebStore.Controllers
 
         }
 
-        public IActionResult Error_404() {return View(); }
-       
+        public IActionResult Error_404() => View();
+        public IActionResult Blogs() => View();
+        public IActionResult BlogSingle() => View();
     }
 }
