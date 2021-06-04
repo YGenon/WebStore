@@ -71,7 +71,7 @@ namespace WebStore.Controllers
             #endregion
 
             var employee = _EmployeesData.Get(id);
-            //var employee = _EmployeesData.GetOld(id);
+            
             if (employee == null) return NotFound();
 
             return View(employee);

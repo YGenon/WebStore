@@ -72,8 +72,7 @@ namespace WebStore.Services
 
         public Employee Get(int id) => _Employees.SingleOrDefault(employee => employee.Id == id);
 
-        //public object GetOld(int id) => _Employees.SingleOrDefault(employee => employee.Id == id).detailsData;
-        
+               
         public int Add(Employee employee)
         {
             if (employee is null) throw new ArgumentNullException(nameof(employee));
