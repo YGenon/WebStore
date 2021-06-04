@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebStore.Services;
+using WebStore.Services.Interfaces;
 
 namespace WebStore
 {
@@ -18,6 +20,8 @@ namespace WebStore
 
         public void ConfigureServices(IServiceCollection services)
         {
+            //регистрируем наш сервис
+            services.AddSingleton<IEmployeesData, InMemoryEmployesData>();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
         }
 
