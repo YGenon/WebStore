@@ -10,8 +10,7 @@ namespace WebStore.Controllers
 {
     //[Controller]
     public class HomeController : Controller
-    {
-       
+    {     
 
 
         private readonly IConfiguration _Configuration;

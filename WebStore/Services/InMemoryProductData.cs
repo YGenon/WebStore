@@ -16,10 +16,7 @@ namespace WebStore.Services
         public IEnumerable<Product> GetProducts(ProductFilter Filter = null)
         {
             IEnumerable<Product> query = TestData.Products;
-
-            //if(Filter?.SectionId != null)
-            //    query = query.Where(product => product.SectionId == Filter.SectionId);
-
+            
             if (Filter?.SectionId is { } section_id)
                 query = query.Where(product => product.SectionId == section_id);
 
