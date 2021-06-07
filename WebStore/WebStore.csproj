@@ -13,5 +13,9 @@
   <ItemGroup>
     <ProjectReference Include="..\WebStore.Domain\WebStore.Domain.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Shared\Components\Brands\" />
+  </ItemGroup>
   
 </Project>
