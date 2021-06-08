@@ -22,6 +22,7 @@ namespace WebStore
         {
             //регистрируем наш сервис
             services.AddSingleton<IEmployeesData, InMemoryEmployesData>();
+            services.AddSingleton<IProductData, InMemoryProductData>();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
         }
 
