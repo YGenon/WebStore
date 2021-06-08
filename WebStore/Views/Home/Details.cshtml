@@ -1,0 +1,40 @@
+﻿@model IEnumerable<WebStore.Models.Employee>
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Сотрудники</title>
+</head>
+<body>
+
+    <h3>Детальная информация о сотруднике</h3>
+    <hr />         
+           
+        @foreach (var employee in Model)
+        {
+            if (Convert.ToInt32(@ViewData["IdEmploees"]) == employee.Id)
+            {
+    
+                <p>@employee.LastName @employee.FirstName @employee.Patronymic</p>
+                <p>----------------------------------------</p>
+
+    
+                 @foreach (var item in employee.detailsData)
+                 {
+                    <p> Телефон -  @item.phone </p>
+                    <p> Mail -  @item.mail</p>
+                    <p>----------------------------------------</p>
+
+                  }
+            }
+         }                              
+
+
+         <p>
+            <a href="/Home/Employees">Сотрудники магазина</a>
+        </p>
+    </body>
+</html>

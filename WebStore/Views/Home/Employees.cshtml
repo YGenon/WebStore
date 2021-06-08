@@ -25,13 +25,16 @@
         <tbody>
             @foreach (var employee in Model)
             {
-                <tr>
-                    <td>@employee.Id</td>
-                    <td>@employee.LastName</td>
-                    <td>@employee.FirstName</td>
-                    <td>@employee.Patronymic</td>
-                    <td>@employee.Age</td>
-                </tr>
+            <tr>
+                <td>@employee.Id</td>
+                <td>@employee.LastName</td>
+                <td>@employee.FirstName</td>
+                <td>@employee.Patronymic</td>
+                <td>@employee.Age</td>
+                <td>
+                    @Html.ActionLink("Детали", "Details", new { id = employee.Id })
+                </td>
+            </tr>
             }
         </tbody>
     </table>
