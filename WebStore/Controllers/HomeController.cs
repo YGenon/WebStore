@@ -80,5 +80,18 @@ namespace WebStore.Controllers
 
 
         }
+
+        public IActionResult Shop() => View();
+        public IActionResult ProductDetails() => View();
+        public IActionResult Checkout() => View();
+        public IActionResult Cart() => View();
+        public IActionResult Login() => View();
+
+        public IActionResult Blogs() => View();
+        public IActionResult BlogSingle() => View();
+
+        public IActionResult Error_404() => View();
+
+        public IActionResult Contact() => View();
     }
 }
