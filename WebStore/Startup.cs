@@ -29,7 +29,10 @@ namespace WebStore
             services.AddTransient<WebStoreDBInitializer>();
 
             //регистрируем наш сервис
+
             services.AddSingleton<IEmployeesData, InMemoryEmployesData>();
+            //services.AddScoped<IEmployeesData, SqlEmployeeData>();
+            
             services.AddScoped<IProductData, SqlProductData>();
 
             //services.AddSingleton<IProductData, InMemoryProductData>();

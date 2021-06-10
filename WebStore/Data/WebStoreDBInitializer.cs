@@ -34,12 +34,13 @@ namespace WebStore.Data
             if (_db.Database.GetPendingMigrations().Any())
             {
                 _Logger.LogInformation("Миграция БД...");
-                _db.Database.Migrate();
+                _db.Database.Migrate();  //аналог команды Update-Database
                 _Logger.LogInformation("Миграция БД выполнена за {0}c", timer.Elapsed.TotalSeconds);
             }
             else
                 _Logger.LogInformation("Миграция БД не требуется. {0}c", timer.Elapsed.TotalSeconds);
 
+            //заполняем таблицы продуктов и брендов
             try
             {
                 InitializeProducts();
@@ -50,8 +51,20 @@ namespace WebStore.Data
                 throw;
             }
 
+            //заполняем таблицу сотрудников
+            try
+            {
+                InitializeEmployees();
+            }
+            catch (Exception e)
+            {
+                _Logger.LogError(e, "Ошибка при инициализации сотрудников в БД");
+                throw;
+            }
+
             _Logger.LogInformation("Инициализация БД завершена за {0} с", timer.Elapsed.TotalSeconds);
         }
+               
 
         private void InitializeProducts()
         {
@@ -107,6 +120,26 @@ namespace WebStore.Data
             }
 
             _Logger.LogInformation("Инициализация товаров выполнена за. {0} c", timer.Elapsed.TotalSeconds);
+        }
+
+        private void InitializeEmployees()
+        {
+            if (_db.Employees.Any())
+            {
+                _Logger.LogInformation("БД сотрудников не нуждается в инициализации");
+                return;
+            }
+            using (_db.Database.BeginTransaction())
+            {
+                _db.Employees.AddRange((IEnumerable<Domain.Entities.Employee>)TestData.EmployeesNew);
+
+                _db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[Employees] ON"); // Костыль!!!
+                _db.SaveChanges();
+                _db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[Employees] OFF");
+
+                _db.Database.CommitTransaction();
+            }
+            _Logger.LogInformation("Инициализация сотрудников выполнена за. {0} c");
         }
     }
 }
