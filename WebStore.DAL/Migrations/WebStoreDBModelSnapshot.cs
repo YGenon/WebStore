@@ -35,7 +35,7 @@ namespace WebStore.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Brand");
+                    b.ToTable("Brands");
                 });
 
             modelBuilder.Entity("WebStore.Domain.Entities.Product", b =>

@@ -10,7 +10,7 @@ using WebStore.DAL.Context;
 namespace WebStore.DAL.Migrations
 {
     [DbContext(typeof(WebStoreDB))]
-    [Migration("20210610101943_Initial")]
+    [Migration("20210610131839_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,7 +37,7 @@ namespace WebStore.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Brand");
+                    b.ToTable("Brands");
                 });
 
             modelBuilder.Entity("WebStore.Domain.Entities.Product", b =>
