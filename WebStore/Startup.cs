@@ -10,6 +10,7 @@ using WebStore.Services;
 using WebStore.Services.Interfaces;
 using WebStore.Data;
 using System;
+using WebStore.Services.InSQL;
 
 namespace WebStore
 {
@@ -29,9 +30,9 @@ namespace WebStore
 
             //регистрируем наш сервис
             services.AddSingleton<IEmployeesData, InMemoryEmployesData>();
-            //services.AddScoped<IProductData, SqlProductData>();
+            services.AddScoped<IProductData, SqlProductData>();
 
-            services.AddSingleton<IProductData, InMemoryProductData>();
+            //services.AddSingleton<IProductData, InMemoryProductData>();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
         }
 

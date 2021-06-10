@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Services\InSQL\" />
     <Folder Include="Views\Shared\Components\Brands\" />
   </ItemGroup>
   
