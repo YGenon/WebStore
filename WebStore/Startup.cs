@@ -30,9 +30,9 @@ namespace WebStore
 
             //регистрируем наш сервис
 
-            services.AddSingleton<IEmployeesData, InMemoryEmployesData>();
-            //services.AddScoped<IEmployeesData, SqlEmployeeData>();
-            
+            //services.AddSingleton<IEmployeesData, InMemoryEmployesData>();
+            services.AddScoped<IEmployeesData, SqlEmployeeData>();
+
             services.AddScoped<IProductData, SqlProductData>();
 
             //services.AddSingleton<IProductData, InMemoryProductData>();

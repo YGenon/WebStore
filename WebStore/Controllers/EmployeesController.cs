@@ -3,9 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebStore.Models;
+//using WebStore.Models;
 using WebStore.Services.Interfaces;
 using WebStore.ViewModels;
+using WebStore.Domain.Entities;
 
 namespace WebStore.Controllers
 {
@@ -94,7 +95,7 @@ namespace WebStore.Controllers
                 LastName = employee.LastName,
                 Name = employee.FirstName,
                 Patronymic = employee.Patronymic,
-                Age = employee.Age,
+                Age = (int)employee.Age,
             };
             return View(view_model);
         }
@@ -133,7 +134,7 @@ namespace WebStore.Controllers
                 LastName = employee.LastName,
                 Name = employee.FirstName,
                 Patronymic = employee.Patronymic,
-                Age = employee.Age,
+                Age = (int)employee.Age,
             });
         }
 
