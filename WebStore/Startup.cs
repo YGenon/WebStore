@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebStore.DAL.Context;
 using WebStore.Services;
 using WebStore.Services.Interfaces;
 
@@ -20,6 +22,7 @@ namespace WebStore
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<WebStoreDB>(opt => opt.UseSqlServer(Configuration.GetConnectionString("SQLServer")));
             //регистрируем наш сервис
             services.AddSingleton<IEmployeesData, InMemoryEmployesData>();
             services.AddSingleton<IProductData, InMemoryProductData>();
