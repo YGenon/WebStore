@@ -11,9 +11,7 @@ namespace WebStore.Services.InSQL
 {
     public class SqlEmployeeData : IEmployeesData
     {
-        private readonly WebStoreDB _db;
-
-        //public SqlEmployeeData(WebStoreDB db) => _db = db;
+        private readonly WebStoreDB _db;       
 
         private int _CurrentMaxId;
 
@@ -46,7 +44,7 @@ namespace WebStore.Services.InSQL
             // TODO: выдает ошибку - не может преобразовать в bool
             //return _db.Employees.Remove(db_item); 
 
-            //TODO: это заглушка
+            //TODO: заглушка
             return true;
             #endregion
         }
