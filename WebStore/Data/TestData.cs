@@ -15,9 +15,10 @@ namespace WebStore.Data
 
         public static IEnumerable<Domain.Entities.Employee> EmployeesNew { get; } = new[]
         {
-            new Domain.Entities.Employee { Id = 1, LastName = "Иванов", FirstName = "Иван", Patronymic = "Иванович", Age = 27 },
-            new Domain.Entities.Employee { Id = 2, LastName = "Петров", FirstName = "Пётр", Patronymic = "Петрович", Age = 31 },
-            new Domain.Entities.Employee { Id = 3, LastName = "Сидоров", FirstName = "Сидор", Patronymic = "Сидорович", Age = 18 },
+            new Domain.Entities.Employee { Id = 1, LastName = "Панарин", FirstName = "Семен", Patronymic = "Иванович", Age = 27 },
+            new Domain.Entities.Employee { Id = 2, LastName = "Кудинов", FirstName = "Алексей", Patronymic = "Петрович", Age = 31 },
+            new Domain.Entities.Employee { Id = 3, LastName = "Варламов", FirstName = "Тимур", Patronymic = "Алексеевич", Age = 18 },
+            new Domain.Entities.Employee { Id = 4, LastName = "Меркулов", FirstName = "Виктор", Patronymic = "Сергеевич", Age = 23 },
         };
 
         public static IEnumerable<Section> Sections { get; } = new[]
