@@ -37,11 +37,18 @@ namespace WebStore.Services.InSQL
 
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
 
-            //var db_item = Get(id);
-            //if (db_item is null) return false;
-            //return _db.Employees.Remove(db_item);
+            var db_item = Get(id);
+            if (db_item is null) return false;
+
+            #region код нужно поправить
+            // TODO: выдает ошибку - не может преобразовать в bool
+            //return _db.Employees.Remove(db_item); 
+
+            //TODO: это заглушка
+            return true;
+            #endregion
         }
 
         public Domain.Entities.Employee Get(int id) => _db.Employees.SingleOrDefault(employee => employee.Id == id);
