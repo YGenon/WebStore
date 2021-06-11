@@ -1,8 +1,8 @@
-﻿@model WebStore.Models.Employee
+﻿@*@model WebStore.Models.Employee*@
+@*@model IEnumerable<WebStore.Domain.Entities.Employee>*@
+@model WebStore.Domain.Entities.Employee
 
-@{
-    ViewData["Title"] = $"Карточка сотрудника {Model.LastName} {Model.FirstName}";
-}
+@{ ViewData["Title"] = $"Карточка сотрудника {Model.LastName} {Model.FirstName}"; }
 
 <div class="container">
     <h1>@ViewData["Title"]</h1>
@@ -11,34 +11,34 @@
         <h4>Сотрудник</h4>
         <hr />
         <dl class="row">
-            <dt class = "col-sm-2">
+            <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.Id)
             </dt>
-            <dd class = "col-sm-10">
+            <dd class="col-sm-10">
                 @Html.DisplayFor(model => model.Id)
             </dd>
-            <dt class = "col-sm-2">
+            <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.FirstName)
             </dt>
-            <dd class = "col-sm-10">
+            <dd class="col-sm-10">
                 @Html.DisplayFor(model => model.FirstName)
             </dd>
-            <dt class = "col-sm-2">
+            <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.LastName)
             </dt>
-            <dd class = "col-sm-10">
+            <dd class="col-sm-10">
                 @Html.DisplayFor(model => model.LastName)
             </dd>
-            <dt class = "col-sm-2">
+            <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.Patronymic)
             </dt>
-            <dd class = "col-sm-10">
+            <dd class="col-sm-10">
                 @Html.DisplayFor(model => model.Patronymic)
             </dd>
-            <dt class = "col-sm-2">
+            <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.Age)
             </dt>
-            <dd class = "col-sm-10">
+            <dd class="col-sm-10">
                 @Html.DisplayFor(model => model.Age)
             </dd>
         </dl>

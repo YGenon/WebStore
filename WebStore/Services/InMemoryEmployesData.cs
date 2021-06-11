@@ -6,7 +6,7 @@ using WebStore.Services.Interfaces;
 
 namespace WebStore.Services
 {
-    public class InMemoryEmployesData : IEmployeesData
+    public class InMemoryEmployesData //: IEmployeesData
     {
         #region Новый объект
         private readonly List<Employee> _Employees = new()
@@ -72,12 +72,12 @@ namespace WebStore.Services
 
         public Employee Get(int id) => _Employees.SingleOrDefault(employee => employee.Id == id);
 
-               
+
         public int Add(Employee employee)
         {
             if (employee is null) throw new ArgumentNullException(nameof(employee));
 
-            if (_Employees.Contains(employee)) return employee.Id; 
+            if (_Employees.Contains(employee)) return employee.Id;
 
             employee.Id = ++_CurrentMaxId;
             _Employees.Add(employee);
@@ -89,12 +89,12 @@ namespace WebStore.Services
         {
             if (employee is null) throw new ArgumentNullException(nameof(employee));
 
-            if(_Employees.Contains(employee)) return; 
+            if (_Employees.Contains(employee)) return;
 
             var db_item = Get(employee.Id);
-            if(db_item is null) return;
+            if (db_item is null) return;
 
-            
+
             db_item.LastName = employee.LastName;
             db_item.FirstName = employee.FirstName;
             db_item.Patronymic = employee.Patronymic;
