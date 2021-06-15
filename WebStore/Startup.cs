@@ -93,6 +93,9 @@ namespace WebStore
             app.UseStaticFiles();
             app.UseRouting();
 
+            app.UseAuthentication();
+            app.UseAuthorization();
+
 
             //var greetings = Configuration["Greetings"];
             app.UseEndpoints(endpoints =>
