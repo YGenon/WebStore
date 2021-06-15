@@ -8,7 +8,7 @@ namespace WebStore.Models
     public class Details
     {
         public int Id { get; set; }
-        public string mail { get; set; }
-        public string phone { get; set; }
+        public string Mail { get; set; }
+        public string Phone { get; set; }
     }
 }
