@@ -11,8 +11,8 @@ using WebStore.Services.Interfaces;
 using WebStore.Data;
 using System;
 using WebStore.Services.InSQL;
-using WebStore.Domain.Identity;
 using Microsoft.AspNetCore.Identity;
+using WebStore.Domain.Entities.Identity;
 
 namespace WebStore
 {

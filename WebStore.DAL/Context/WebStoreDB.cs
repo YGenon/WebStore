@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WebStore.Domain.Entities;
-using WebStore.Domain.Identity;
+using WebStore.Domain.Entities.Identity;
 
 namespace WebStore.DAL.Context
 {

@@ -24,7 +24,7 @@ namespace WebStore.Controllers
             _Logger = Logger;
         }
 
-        #region Register
+#region Регистрация
 
         public IActionResult Register() => View(new RegisterUserViewModel());
 
@@ -60,7 +60,7 @@ namespace WebStore.Controllers
             return View(Model);
         }
 
-        #endregion
+#endregion
 
         public IActionResult Login(string ReturnUrl) => View(new LoginViewModel { ReturnUrl = ReturnUrl });
 
@@ -82,12 +82,7 @@ namespace WebStore.Controllers
                 );
 
             if (login_result.Succeeded)
-            {
-                //return Redirect(Model.ReturnUrl); // не безопасно!
-                //if (Url.IsLocalUrl(Model.ReturnUrl))
-                //    return Redirect(Model.ReturnUrl);
-                //else
-                //    return RedirectToAction("Index", "Home");
+            {                
                 return LocalRedirect(Model.ReturnUrl ?? "/");
             }
 
