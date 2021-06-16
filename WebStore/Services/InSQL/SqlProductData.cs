@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 using WebStore.DAL.Context;
 using WebStore.Domain;
@@ -29,5 +30,10 @@ namespace WebStore.Services.InSQL
 
             return query;
         }
+
+        public Product GetProductById(int Id) => _db.Products
+           .Include(p => p.Brand)
+           .Include(p => p.Section)
+           .SingleOrDefault(p => p.Id == Id);
     }
 }

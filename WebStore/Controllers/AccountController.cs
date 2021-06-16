@@ -27,7 +27,7 @@ namespace WebStore.Controllers
             _Logger = Logger;
         }
 
-        #region Register
+        #region 
 
         [AllowAnonymous]
         public IActionResult Register() => View(new RegisterUserViewModel());
