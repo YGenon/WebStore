@@ -59,37 +59,8 @@
                         </div>
                     </div>
                 </div>
-                @*<div class="col-sm-8">
-            <div class="shop-menu pull-right">
-                <ul class="nav navbar-nav">
-                    <li><a href="#"><i class="fa fa-user"></i> Аккаунт</a></li>
-                    <li><a href="#"><i class="fa fa-star"></i> Список желаний</a></li>
-                    <li><a asp-controller="Home" asp-action="Checkout"><i class="fa fa-crosshairs"></i> Оформить заказ</a></li>
-                    <li><a asp-controller="Home" asp-action="Cart"><i class="fa fa-shopping-cart"></i> Корзина</a></li>
-                    <li><a asp-controller="Home" asp-action="Login"><i class="fa fa-lock"></i> Вход</a></li>
-                </ul>
-            </div>
-        </div>*@
 
-                @*Потом переделать --------------------->*@
-                <div class="col-sm-8">
-                    <div class="shop-menu pull-right">
-                        <ul class="nav navbar-nav">
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-user"></i>
-                                    @(User.Identity?.Name ?? "???")
-                                </a>
-                            </li>
-                            <li><a asp-controller="Home" asp-action="Cart"><i class="fa fa-shopping-cart"></i> Корзина</a></li>
-                            <li><a asp-controller="Account" asp-action="Login"><i class="fa fa-lock"></i> Вход</a></li>
-                            <li><a asp-controller="Account" asp-action="Logout"><i class="fa fa-lock"></i> Выход</a></li>
-                            <li><a asp-controller="Account" asp-action="Register"><i class="fa fa-lock"></i> Регистрация</a></li>
-                        </ul>
-                    </div>
-                </div>
-                @*--------------------->Потом переделать*@
-
+                <vc:user-info />
             </div>
         </div>
     </div><!--/header-middle-->
@@ -108,7 +79,7 @@
                         </button>
                     </div>
 
-                    <partial name="Partial\_MainMenu"/>
+                    <partial name="Partial\_MainMenu" />
 
                 </div>
                 <div class="col-sm-3">
