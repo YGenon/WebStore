@@ -29,7 +29,7 @@ namespace WebStore.Services.InSQL
 
             employee.Id = ++_CurrentMaxId;
             _db.Employees.Add(employee);
-
+            _db.SaveChanges();
             return employee.Id;
         }
 
@@ -37,16 +37,19 @@ namespace WebStore.Services.InSQL
         {
             //throw new NotImplementedException();
 
-            var db_item = Get(id);
-            if (db_item is null) return false;
+            var employee = Get(id);
+            if (employee is null) return false;
 
             #region код нужно поправить
             // TODO: выдает ошибку - не может преобразовать в bool
-            //return _db.Employees.Remove(db_item); 
+             _db.Employees.Remove(employee);
 
             //TODO: заглушка
-            return true;
+            //return true;
             #endregion
+
+            _db.SaveChanges();
+            return true;
         }
 
         public Domain.Entities.Employee Get(int id) => _db.Employees.SingleOrDefault(employee => employee.Id == id);
@@ -59,16 +62,18 @@ namespace WebStore.Services.InSQL
         {
             if (employee is null) throw new ArgumentNullException(nameof(employee));
 
-            if (_db.Employees.Contains(employee)) return;
+            _db.Update(employee);
+            _db.SaveChanges();
+            //if (_db.Employees.Contains(employee)) return;
 
-            var db_item = Get(employee.Id);
-            if (db_item is null) return;
+            //var db_item = Get(employee.Id);
+            //if (db_item is null) return;
 
 
-            db_item.LastName = employee.LastName;
-            db_item.FirstName = employee.FirstName;
-            db_item.Patronymic = employee.Patronymic;
-            db_item.Age = employee.Age;
+            //db_item.LastName = employee.LastName;
+            //db_item.FirstName = employee.FirstName;
+            //db_item.Patronymic = employee.Patronymic;
+            //db_item.Age = employee.Age;
         }
     }
 }
