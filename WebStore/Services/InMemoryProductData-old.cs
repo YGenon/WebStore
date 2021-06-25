@@ -25,5 +25,6 @@ namespace WebStore.Services
 
             return query;
         }
+        public Product GetProductById(int Id) => TestData.Products.SingleOrDefault(p => p.Id == Id);
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using WebStore.Data;
+using WebStore.Domain.Entities;
 using WebStore.Models;
 using WebStore.Services.Interfaces;
 
@@ -9,11 +11,11 @@ namespace WebStore.Services
     public class InMemoryEmployesData //: IEmployeesData
     {
         #region Новый объект
-        private readonly List<Employee> _Employees = new()
+        private readonly List<Models.Employee> _Employees = new()
         {
-            new Employee { Id = 1, LastName = "Иванов", FirstName = "Иван", Patronymic = "Иванович", Age = 27 },
-            new Employee { Id = 2, LastName = "Петров", FirstName = "Пётр", Patronymic = "Петрович", Age = 31 },
-            new Employee { Id = 3, LastName = "Сидоров", FirstName = "Сидор", Patronymic = "Сидорович", Age = 18 },
+            new Models.Employee { Id = 1, LastName = "Иванов", FirstName = "Иван", Patronymic = "Иванович", Age = 27 },
+            new Models.Employee { Id = 2, LastName = "Петров", FirstName = "Пётр", Patronymic = "Петрович", Age = 31 },
+            new Models.Employee { Id = 3, LastName = "Сидоров", FirstName = "Сидор", Patronymic = "Сидорович", Age = 18 },
         };
         #endregion
 
@@ -68,12 +70,12 @@ namespace WebStore.Services
             _CurrentMaxId = _Employees.Max(i => i.Id);
         }
 
-        public IEnumerable<Employee> GetAll() => _Employees;
+        public IEnumerable<Models.Employee> GetAll() => _Employees;
 
-        public Employee Get(int id) => _Employees.SingleOrDefault(employee => employee.Id == id);
+        public Models.Employee Get(int id) => _Employees.SingleOrDefault(employee => employee.Id == id);
 
 
-        public int Add(Employee employee)
+        public int Add(Models.Employee employee)
         {
             if (employee is null) throw new ArgumentNullException(nameof(employee));
 
@@ -85,7 +87,7 @@ namespace WebStore.Services
             return employee.Id;
         }
 
-        public void Update(Employee employee)
+        public void Update(Models.Employee employee)
         {
             if (employee is null) throw new ArgumentNullException(nameof(employee));
 
@@ -108,5 +110,7 @@ namespace WebStore.Services
             if (db_item is null) return false;
             return _Employees.Remove(db_item);
         }
+
+        
     }
 }

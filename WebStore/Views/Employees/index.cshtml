@@ -1,4 +1,4 @@
-﻿@*@model IEnumerable<WebStore.Models.Employee>*@
+﻿@using WebStore.Domain.Entities.Identity
 @model IEnumerable<WebStore.Domain.Entities.Employee>
 
 @{ ViewBag.Title = "Сотрудники"; }
@@ -6,9 +6,12 @@
 <div class="container">
     <h3>Сотрудники магазина</h3>
     <hr />
-    <p>
-        <a asp-action="Create" class="btn btn-primary">Создать</a>
-    </p>
+    @if (User.IsInRole(Role.Administrators))
+    {
+        <p>
+            <a asp-action="Create" class="btn btn-default">Создать</a>
+        </p>        
+    }
     <table class="table">
         <thead>
             <tr>
@@ -18,25 +21,32 @@
                 <th>Отчество</th>
                 <th>Возраст</th>
                 <th></th>
-                <th></th>
-                <th></th>
+                @if (User.IsInRole(Role.Administrators))
+                {
+                    <th></th>
+                    <th></th>
+                }
+
             </tr>
         </thead>
         <tbody>
             @foreach (var employee in Model)
             {
-                <tr>
-                    <td>@employee.Id</td>
-                    <td>@employee.LastName</td>
-                    <td>@employee.FirstName</td>
-                    <td>@employee.Patronymic</td>
-                    <td>@employee.Age</td>
-                    <td>
-                        @*@Html.ActionLink("Детали", "Details", new { id = employee.Id })*@
-                        <a asp-action="Details" asp-route-id="@employee.Id">
-                            <i class="fa fa-info"></i>
-                        </a>
-                    </td>
+            <tr>
+                <td>@employee.Id</td>
+                <td>@employee.LastName</td>
+                <td>@employee.FirstName</td>
+                <td>@employee.Patronymic</td>
+                <td>@employee.Age</td>
+                <td>
+                    @*@Html.ActionLink("Детали", "Details", new { id = employee.Id })*@
+                    <a asp-action="Details" asp-route-id="@employee.Id">
+                        <i class="fa fa-info"></i>
+                    </a>
+                </td>
+
+                @if (User.IsInRole(Role.Administrators))
+                {
                     <td>
                         <a asp-action="Edit" asp-route-id="@employee.Id">
                             <i class="fa fa-edit"></i>
@@ -49,7 +59,8 @@
                             </button>
                         </form>
                     </td>
-                </tr>
+                }
+            </tr>
             }
         </tbody>
     </table>

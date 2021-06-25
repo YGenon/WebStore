@@ -13,6 +13,7 @@ using System;
 using WebStore.Services.InSQL;
 using Microsoft.AspNetCore.Identity;
 using WebStore.Domain.Entities.Identity;
+using WebStore.Services.InCookies;
 
 namespace WebStore
 {
@@ -73,7 +74,7 @@ namespace WebStore
 
             //services.AddSingleton<IEmployeesData, InMemoryEmployesData>();
             services.AddScoped<IEmployeesData, SqlEmployeeData>();
-
+            services.AddScoped<ICartService, InCookiesCartService>();
             services.AddScoped<IProductData, SqlProductData>();
 
             //services.AddSingleton<IProductData, InMemoryProductData>();
