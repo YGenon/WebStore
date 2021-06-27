@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WebStore.DAL.Context;
 using WebStore.Services;
-using WebStore.Services.Interfaces;
+using WebStore.Interfaces.Services;
 using WebStore.Data;
 using System;
 using WebStore.Services.InSQL;

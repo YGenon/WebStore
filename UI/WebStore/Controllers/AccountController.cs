@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using WebStore.Domain.Entities.Identity;
-using WebStore.ViewModels;
+using WebStore.Domain.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 
 

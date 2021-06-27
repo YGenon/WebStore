@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using WebStore.DAL.Context;
 using WebStore.Domain.Entities;
 using WebStore.Models;
-using WebStore.Services.Interfaces;
+using WebStore.Interfaces.Services;
 
 namespace WebStore.Services.InSQL
 {
