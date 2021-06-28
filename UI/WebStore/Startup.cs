@@ -14,6 +14,8 @@ using WebStore.Services.InSQL;
 using Microsoft.AspNetCore.Identity;
 using WebStore.Domain.Entities.Identity;
 using WebStore.Services.InCookies;
+using WebStore.Interfaces.TestAPI;
+using WebStore.WebAPI.Clients.Values;
 
 namespace WebStore
 {
@@ -77,6 +79,7 @@ namespace WebStore
             services.AddScoped<ICartService, InCookiesCartService>();
             services.AddScoped<IProductData, SqlProductData>();
             services.AddScoped<IOrderService, SqlOrderService>();
+            services.AddHttpClient<IValuesService, ValuesClient>(client => client.BaseAddress = new Uri(Configuration["WebAPI"]));
 
             //services.AddSingleton<IProductData, InMemoryProductData>();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
