@@ -6,16 +6,17 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WebStore.DAL.Context;
-using WebStore.Services;
 using WebStore.Interfaces.Services;
 using WebStore.Data;
 using System;
-using WebStore.Services.InSQL;
 using Microsoft.AspNetCore.Identity;
 using WebStore.Domain.Entities.Identity;
-using WebStore.Services.InCookies;
 using WebStore.Interfaces.TestAPI;
 using WebStore.WebAPI.Clients.Values;
+using WebStore.WebAPI.Clients.Employees;
+using WebStore.WebAPI.Clients.Products;
+using WebStore.WebAPI.Clients.Orders;
+using WebStore.Services.Services.InCookies;
 
 namespace WebStore
 {
@@ -75,11 +76,22 @@ namespace WebStore
             //регистрируем наш сервис
 
             //services.AddSingleton<IEmployeesData, InMemoryEmployesData>();
-            services.AddScoped<IEmployeesData, SqlEmployeeData>();
+            //services.AddScoped<IEmployeesData, SqlEmployeeData>();
             services.AddScoped<ICartService, InCookiesCartService>();
-            services.AddScoped<IProductData, SqlProductData>();
-            services.AddScoped<IOrderService, SqlOrderService>();
-            services.AddHttpClient<IValuesService, ValuesClient>(client => client.BaseAddress = new Uri(Configuration["WebAPI"]));
+            //services.AddScoped<IProductData, SqlProductData>();
+            //services.AddScoped<IOrderService, SqlOrderService>();
+
+            //services.AddHttpClient<IProductData, ProductsClient>(client => client.BaseAddress = new Uri(Configuration["WebAPI"]));
+            //services.AddHttpClient<IOrderService, OrdersClient>(client => client.BaseAddress = new Uri(Configuration["WebAPI"]));
+            //services.AddHttpClient<IEmployeesData, EmployeesClient>(client => client.BaseAddress = new Uri(Configuration["WebAPI"]));
+            //services.AddHttpClient<IValuesService, ValuesClient>(client => client.BaseAddress = new Uri(Configuration["WebAPI"]));
+
+            services.AddHttpClient("WebStoreAPI", client => client.BaseAddress = new Uri(Configuration["WebAPI"]))
+               .AddTypedClient<IValuesService, ValuesClient>()
+               .AddTypedClient<IEmployeesData, EmployeesClient>()
+               .AddTypedClient<IProductData, ProductsClient>()
+               .AddTypedClient<IOrderService, OrdersClient>()
+                ;
 
             //services.AddSingleton<IProductData, InMemoryProductData>();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
