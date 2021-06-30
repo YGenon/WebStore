@@ -4,7 +4,7 @@ using System.Linq;
 using WebStore.DAL.Context;
 using WebStore.Interfaces.Services;
 
-namespace WebStore.Services.InSQL
+namespace WebStore.Services.Services.InSQL
 {
     public class SqlEmployeeData : IEmployeesData
     {
